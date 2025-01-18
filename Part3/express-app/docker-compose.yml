@@ -1,0 +1,14 @@
+version: '3'
+services:
+  express-app:
+    image: cbrit0/express-app:latest
+    build:
+      context: ./
+    ports:
+      - "8080:8080"
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=30
